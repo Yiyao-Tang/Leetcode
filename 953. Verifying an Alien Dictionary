@@ -1,0 +1,19 @@
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        hashtable = {word:i for i,word in enumerate(order)}
+        alr_true = 0
+        for i in range(len(words)-1):
+            print(words[i])
+            for idx in range(min(len(words[i]),len(words[i+1]))):
+                print(idx,words[i][idx],words[i+1][idx])
+                if hashtable[words[i][idx]] == hashtable[words[i+1][idx]]:
+                    continue
+                if hashtable[words[i][idx]] < hashtable[words[i+1][idx]]:
+                    alr_true = 1
+                    break
+                if hashtable[words[i][idx]] > hashtable[words[i+1][idx]]:
+                    return False
+            if((alr_true != 1) and (len(words[i])>len(words[i+1]))):
+                alr_true = 0
+                return False
+        return True
