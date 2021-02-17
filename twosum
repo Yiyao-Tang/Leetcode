@@ -1,0 +1,12 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashtable = {}
+        for i,num in enumerate(nums):
+            hashtable[num] = i
+            #print(hashtable)
+        for i,num in enumerate(nums):
+            #print(i,num)
+            if ((target - num) in hashtable.keys()):
+                if (i != hashtable[target - num]):
+                    #print(i,target - num)
+                    return [i,hashtable[target - num]]
